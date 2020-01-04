@@ -1,0 +1,14 @@
+body{
+  background-image: ;
+  text-align: center;
+  height:100%;
+
+}
+
+#container{
+  margin:2.5% auto;
+  background-color: azure;
+  width:960px;
+  height: 95%;
+  box-sizing: border-box;
+}
