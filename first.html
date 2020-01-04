@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Totally Trivial Trivia</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1><strong>TOTALLY TRIVIAL TRIVIA GAME!!!!</strong></h1>
+        <p><strong>
+            <h4>Time Remaining:</h4><span class="timer"></span>
+          </strong></p>
+        <p><strong>
+      </div>
+      <!--  <div class="container">
+        </h1>Totally Trivial Trivia!</h1>
+        <div class="button"></div>
+        <button id="start">Start</button> 
+      </div>-->
+      <!---  </div>
+  </div>  --->
+
+
+      <div class="row">
+        <div class="col-lg-12">
+
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><strong>Word to Guess</strong></h3>
+            </div>
+            <div class="card-body">
+
+              <h3 id="word-blanks">_ _ _ _ _ _ _ _ _ </h3>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+
+              <strong>Wrong Guesses: </strong> <span id="wrong-guesses"></span>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+
+              <strong>Guesses Left: </strong> <span id="guesses-left">10</span>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+              <strong>Wins: </strong> <span id="win-counter">0</span>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+              <strong>Losses: </strong> <span id="loss-counter">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <script>
+        var questions = [
+          { q: "11TH CENTURY IS WHEN LEIF ERICKSON FLOURISHED AND THEN DIED?", a: "t" },
+
+          { q: "IS IT THE 3RD CENTURY BC IN WHICH ALEXANDER THE GREAT RULED?", a: "f" },
+
+          { q: "EGYPT IS WHERE THE OLDEST HOMO SAPIEN BONES WERE FOUND?", a: "f" },
+
+          { q: "1999 WAS THE YEAR JAVASCRIPT WAS CREATED?", a: "f" },
+
+          { q: "JAMES POLK WAS THE 14TH PRESIDENT OF THE U.S?", a: "f" },
+
+          { q: "GODFATHER 2 WON FOR BEST PICTURE IN 1974?", a: "t" },
+
+          { q: "FRITZ LANG'S 'M' WAS THE FIRST BEST PICTURE WINNER", a: "f" },
+
+          { q: "DID GEORGE WASHINGTON DIE IN THE 1700'S?", a: "t" },
+
+          { q: "FRANKLIN DELANO ROOSEVELT WAS ELECTED PRESIDENT 3 TIMES?", a: "f" },
+
+          { q: "ALAN TURING'S CAUSE OF DEATH WAS SUICIDE?", a: "t" }];
+
+
+
+      </script>
+
+
+
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</html>

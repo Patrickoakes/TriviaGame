@@ -3,45 +3,165 @@
 
 <head>
   <title>Totally Trivial Trivia</title>
-  <!--  <link rel="stylesheet" href="assets/css/style.css"> -->
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 <body>
   <div class="container">
-    <div class="jumbotron">
-      <h1 class="text-center"></h1>Totally Trivial Trivia!</h1>
-      <div class="button"></div>
-      <button id="start">Start</button>
-    </div>
-  </div>
-  </div>
-  <script>
-    var questions = [
-      { q: "11TH CENTURY IS WHEN LEIF ERICKSON FLOURISHED AND THEN DIED?", a: "t" },
-
-      { q: "IS IT THE 3RD CENTURY BC IN WHICH ALEXANDER THE GREAT RULED?", a: "f" },
-
-      { q: "EGYPT IS WHERE THE OLDEST HOMO SAPIEN BONES WERE FOUND?", a: "f" },
-
-      { q: "1999 WAS THE YEAR JAVASCRIPT WAS CREATED?", a: "f" },
-
-      { q: "JAMES POLK WAS THE 14TH PRESIDENT OF THE U.S?", a: "f" },
-
-      { q: "GODFATHER 2 WON FOR BEST PICTURE IN 1974?", a: "t" },
-
-      { q: "FRITZ LANG'S 'M' WAS THE FIRST BEST PICTURE WINNER", a: "f" },
-
-      { q: "DID GEORGE WASHINGTON DIE IN THE 1700'S?", a: "t" },
-
-      { q: "FRANKLIN DELANO ROOSEVELT WAS ELECTED PRESIDENT 3 TIMES?", a: "f" },
-
-      { q: "ALAN TURING'S CAUSE OF DEATH WAS SUICIDE?", a: "t" }];
+    <div class="jumbotron text-center">
+      <div class="container">
+        <h1><strong>TOTALLY TRIVIAL TRIVIA GAME!!!!</strong></h1>
+        <p><strong>
+            <h4>Time Remaining:</h4><span class="timer"></span>
+          </strong></p>
+        <p><strong>
+      </div>
 
 
 
-  </script>
+
+      <div class="row">
+        <div class="col-lg-12">
+
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title"><strong>AND THE QUESTION THAT COULD SAVE HUMANITY IS......</strong></h3>
+            </div>
+            <div class="card-body">
+
+              <h3 id="word-blanks">QUESTION</h3>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+
+              <strong>WRONG GUESSES: </strong> <span id="wrong-guesses"></span>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+
+              <strong>QUESTIONS LEFT: </strong> <span id="guesses-left">10</span>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+              <strong>WINS: </strong> <span id="win-counter">0</span>
+            </div>
+          </div>
+
+
+          <div class="card">
+            <div class="card-body">
+
+              <strong>LOSSES: </strong> <span id="loss-counter">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        var questions = [
+          { q: "11TH CENTURY IS WHEN LEIF ERICKSON FLOURISHED AND THEN DIED?", a: "True" },
+
+          { q: "IS IT THE 3RD CENTURY BC IN WHICH ALEXANDER THE GREAT RULED?", a: "False" },
+
+          { q: "EGYPT IS WHERE THE OLDEST HOMO SAPIEN BONES WERE FOUND?", a: "False" },
+
+          { q: "1999 WAS THE YEAR JAVASCRIPT WAS CREATED?", a: "False" },
+
+          { q: "JAMES POLK WAS THE 14TH PRESIDENT OF THE U.S?", a: "False" },
+
+          { q: "STEVEN SPIELBERG DIRECTED 2001: A SPACE ODYSSEY?", a: "False" },
+
+          { q: "FRITZ LANG'S 'M' WAS THE FIRST BEST PICTURE WINNER", a: "False" },
+
+          { q: "DID GEORGE WASHINGTON DIE IN THE 1700'S?", a: "True" },
+
+          { q: "FRANKLIN DELANO ROOSEVELT WAS ELECTED PRESIDENT 4 TIMES?", a: "True" },
+
+          { q: "ALAN TURING'S CAUSE OF DEATH WAS SUICIDE?", a: "True" }];
+
+        var score = 0;
+        // Variable to hold the index of current question.
+        var questionIndex = 0;
+        var questionContainer = document.querySelector("#question");
+        var scoreContainer = document.querySelector("#score");
+        var notificationContainer = document.querySelector("#notification");
+
+        function renderQuestion() {
+          // If there are still more questions, render the next one.
+          if (questionIndex < questions.length) {
+            questionContainer.innerHTML = questions[questionIndex].q;
+          }
+          // If there aren't, render the end game screen.
+          else {
+            questionContainer.innerHTML = "Game Over!";
+            scoreContainer.innerHTML = "Final Score: " + score + " out of " + questions.length;
+          }
+        }
+
+        // Function that updates the score...
+        function updateScore() {
+          scoreContainer.innerHTML = "Score: " + score;
+        }
+        // MAIN PROCESS
+        // ==============================================================================
+
+        // Calling functions to start the game.
+        renderQuestion();
+        updateScore();
+
+        // When the user presses a key, it will run the following function...
+        document.onkeyup = function (event) {
+
+          // If there are no more questions, stop the function.
+          if (questionIndex === questions.length) {
+            return;
+          }
+
+          // Determine which key was pressed, make it lowercase, and set it to the userInput variable.
+          var userInput = event.key.toLowerCase();
+
+          // Only run this code if "t" or "f" were pressed.
+          if (userInput === "t" || userInput === "f") {
+
+            // If they guess the correct answer, increase and update score, alert them they got it right.
+            if (userInput === questions[questionIndex].a) {
+              notificationContainer.innerHTML = "Correct!";
+              score++;
+              updateScore();
+            }
+            // If wrong, alert them they are wrong.
+            else {
+              notificationContainer.innerHTML = "Wrong!";
+            }
+
+            // Increment the questionIndex variable and call the renderQuestion function.
+            questionIndex++;
+            renderQuestion();
+
+          }
+
+        };
+
+
+
+      </script>>
+</body>
+
+</html>
 
 
 
